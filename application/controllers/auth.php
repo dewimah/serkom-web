@@ -7,7 +7,6 @@ class Auth extends CI_Controller {
         $this->load->library('form_validation');
     }
 
-
 public function index(){
   $this->form_validation->set_rules('email','Email','trim|required|valid_email');
   $this->form_validation->set_rules('password','Password','trim|required');
@@ -21,32 +20,75 @@ public function index(){
   }
 }
 
-private function login(){
-  $email = $this->input->post('email');
-  $password = $this->input->post('password');
-
-  $admin = $this->db->get_where('admin',['email'=> $email])->row_array();
-  if($admin){
-    if(password_verify($password,$admin['password'])){
-      $data = [
-        'email'=> $admin['email'],
-      ];
-      $this->session->set_userdata($data);
-      redirect(base_url("CPariwisata"));
-        }else{
-      $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
-      password salah
-    </div>');
-      redirect('auth');
-    }
+public function user(){
+  $this->form_validation->set_rules('email','Email','trim|required|valid_email');
+  $this->form_validation->set_rules('password','Password','trim|required');
+  if($this->form_validation->run() == false){
+    $data['title']='Login Page';
+    $this->load->view('templete/auth_header',$data);
+    $this->load->view('loginuser');
+    $this->load->view('templete/auth_footer');
   }else{
-    $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
-      Ga Bisa Gais Email Mu
-    </div>');
-      redirect('auth');
+    $this->loginuser();
   }
 }
 
+public function login(){
+    $post = $this->input->post(null, TRUE);
+ if(isset($_POST['login'])){
+  $this->load->model('login_model');
+  $query = $this->login_model->login($post);
+  if($query->num_rows()> 0){
+    $row = $query->row();
+    $params = array(
+      'id' => $row->id,
+      'level' => $row->level
+    );
+    $this->session->set_userdata($params);
+    echo"<script>
+    alert('Login sukses');
+    window.location='".site_url('CPariwisata')."';
+    </script>";
+  }else{
+    echo"<script>
+    alert('Login Gagal , Username / Password Salah');
+    window.location='".site_url('auth')."';
+    </script>";
+  }
+ } 
+}
+
+public function loginuser(){
+  $post = $this->input->post(null, TRUE);
+if(isset($_POST['login'])){
+$this->load->model('login_model');
+$query = $this->login_model->user($post);
+if($query->num_rows()> 0){
+  $row = $query->row();
+  $params = array(
+    'id' => $row->id,
+    'nama' => $row->nama
+  );
+  $this->session->set_userdata($params);
+  echo"<script>
+  alert('Login sukses');
+  window.location='".site_url('CUser')."';
+  </script>";
+}else{
+  echo"<script>
+  alert('Login Gagal , Username / Password Salah');
+  window.location='".site_url('beranda.php')."';
+  </script>";
+}
+} 
+}
+
+
+public function logout(){
+  $params = array('id','level');
+  $this->session->unset_userdata($params);
+  redirect('auth');
+}
 public function registrasi(){
   $this->form_validation->set_rules('nama','Name','required|trim');
   $this->form_validation->set_rules('email','Email','required|trim|valid_email|is_unique[admin.email]',[
@@ -65,7 +107,6 @@ public function registrasi(){
       $data = [
         'nama' => $this->input->post('nama'),
         'email' => $this->input->post('email'),
-        'image' => 'default.jpg',
         'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
       ];
 

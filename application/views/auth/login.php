@@ -15,7 +15,7 @@
                             <div class="col-lg">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Login Page!</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Login Admin</h1>
                                     </div>
 
                                     <?= $this->session->flashdata('message'); ?>
@@ -33,7 +33,7 @@
                                                 <?= form_error('password',' <small class="text-danger pl-3">','</small>'); ?>
                                         </div>
                                        
-                                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                                        <button type="submit"name="login" class="btn btn-primary btn-user btn-block">
                                             Login
                                         </button>
                                         <hr>
