@@ -21,24 +21,22 @@
   <table class="table">
     <tr>
         <th>ID Paket </th>
-        <th>Nama Paket </th>
-        <th>Jenis Paket </th>
-        <th>Harga Paket </th>
-        <th>Fasilitas Paket </th>
-        <th>Status Paket</th>
+        <th>Tujuan </th>
+        <th>Alamat </th>
+        <th>Kelas </th>
+        <th>Harga </th>
+        <th>Fasilitas</th>
         <th colspan="2">Aksi</th>
     </tr>
     <?php
     foreach ($datapaket as $data) :?>
     <tr>
         <td><?php echo $data->id_paket?></td>
-        <td><?php echo $data->nama_paket?></td>
-        <td><?php echo $data->jenis_paket?></td>
-        <td><?php echo $data->harga_paket?></td>
-        <td><?php echo $data->fasilitas_paket?></td>
-        <td><?php echo $data->status_paket?></td>
-        <td><?php echo anchor('CPariwisata/detail/'.$data->id_paket,'<div class="btn btn-success btn-sm">
-        <i class="fa fa-search-plus"></i></div>')?></td>
+        <td><?php echo $data->nama_wisata?></td>
+        <td><?php echo $data->alamat_wisata?></td>
+        <td><?php echo $data->nama_kelas?></td>
+        <td><?php echo $data->harga_kelas?></td>
+        <td><?php echo $data->fasilitas?></td>
         <td onclick="javascript: return confirm('Yakin hapus Data ini?')">
         <?php echo anchor('CPariwisata/hapus/'.$data->id_paket,
         '<div class="btn btn-danger btn-sm"><i class="fa fa-trash"></td>');?>
@@ -70,60 +68,33 @@
        </div>
 
        <div class="form-grup">
-       <label>Nama Paket</label>
-       <input type="text"  name="nama" class="form-control <?php echo form_error('nama')? 'is-invalid':''?>">
-       <div class="invalid-feedback">
-       <?php echo form_error('nama')?>
-       </div>
-       </div>
-
-       <div class="form-grup">
-       <label>Jenis Paket (Foreign Key)</label></br>
-       <?php   
-       $datapaket = $this->db->get('jenis_wisata');
+       <label>Destinasi</label></br>
+       <?php 
+       $datapaket = $this->db->get('destinasi');
 
        foreach ($datapaket->result_array() as $row)
        {
-               $options[$row['kode']]=$row['jenis'];
+               $options[$row['id_wisata']]=$row['nama_wisata'];
        }
-       $jenis=set_value('jenis_wisata');
-       echo form_dropdown('jenis_wisata',$options,$jenis);
-     /*
-        foreach ($datapaket->result_array() as $row)
-        {
-          global $options;
-          $options[$row['kode']]=$row['jenis'];
-        }
-	      $jenis=set_value('jenis_wisata');
-       echo form_dropdown('jenis_wisata',$options,$jenis);*/?>
+       $jenis=set_value('destinasi');
+       echo form_dropdown('destinasi',$options,$jenis);
+       ?>
       </div> 
 
-       <div class="form-grup">
-       <label>Harga Paket</label>
-       <input type="text" name="harga" class="form-control">
-       </div>
+       
+      <div class="form-grup">
+       <label>Kelas</label></br>
+       <?php 
+       $data = $this->db->get('kelas');
 
-       <div class="form-grup">
-       <label>Foto Paket</label>
-       <input class="form-control-file" type="file" name="foto_paket" class="form-control">
-       </div>
-
-       <div class="form-grup">
-       <label>Fasilitas Paket</label>
-       <?php echo form_textarea(['name'=>'fasilitas','rows'=>'5','cols'=>'8','id'=>'fasilitas','class'=>'form-control']);?>
-       </div>
-
-       <div class="form-grup">
-       <label>Status Paket</label>
-       <?php  
-       $options=array(
-       'Ada'=>'Tersedia',
-       'Tidak'=>'Tidak Tersedia' ,
-       );
-       echo form_dropdown('status',$options,'','class="form-control"');?>
-      </div>    
-
-       </div>
+       foreach ($data->result_array() as $row)
+       {
+               $options[$row['id_kelas']]=$row['nama_kelas'];
+       }
+       $km=set_value('kelas');
+       echo form_dropdown('kelas',$options,$km);
+       ?>
+      </div></br>
 
        <button type="reset" class="btn btn-danger" data-dismiss="modal">Reset</button>
         <button type="submit" class="btn btn-primary">Simpan</button>

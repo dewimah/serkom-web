@@ -9,7 +9,7 @@
         </button>
       </div>
       <div class="modal-body">
-       <form method="post" action="<?php echo base_url().'CPariwisata/tambah_aksi';?>">
+       <form method="post" action="<?php echo base_url().'CPariwisata/tambah_aksi';?>" enctype='multipart/form-data'>
        <div class="form-grup">
        <label>ID Paket</label>
        <input type="text" name="id" class="form-control">
@@ -49,7 +49,7 @@
 
        <div class="form-grup">
        <label>Foto Paket</label>
-       <input type="text" name="foto" class="form-control">
+       <input type="file" name="file" class="form-control">
        </div>
 
        <div class="form-grup">
@@ -70,7 +70,7 @@
        </div>
 
        <button type="reset" class="btn btn-danger" data-dismiss="modal">Reset</button>
-        <button type="submit" class="btn btn-primary">Simpan</button>
+        <button type="submit" class="btn btn-primary" name="upload">Simpan</button>
        </form>
       </div>
     </div>

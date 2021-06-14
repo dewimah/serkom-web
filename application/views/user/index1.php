@@ -74,7 +74,7 @@
 				</div>
 				<div class="col-xs-8 text-right menu-1">
 					<ul>
-						<li><a href="<?= base_url('assets/master/');?>destination.html">Destination</a></li>
+						<li><a href="<?= base_url('cart');?>">Paket Wisata</a></li>
 						<li class="has-dropdown">
 							<a href="#">Travel</a>
 							<ul class="dropdown">
@@ -84,29 +84,77 @@
 								<li><a href="#">Canada</a></li>
 							</ul>
 						</li>
-						<li><a href="<?= base_url('assets/master/');?>pricing.html">Pricing</a></li>
-						<li><a href="<?= base_url('assets/master/');?>contact.html">Contact</a></li>
+						<li><a href="<?= base_url('assets/master/');?>pricing.html">Contact</a></li>
+						<li><a href="<?= base_url('assets/master/');?>contact.html">Logout</a></li>
 					</ul>	
 				</div>
 			</div>
-			
 		</div>
 	</nav>
 	
+	
+
 	<header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style="background-image: url(<?= base_url('assets/');?>img/3.jpg)">
 		<div class="overlay"></div>
 		<div class="gtco-container">
 			<div class="row">
 				<div class="col-md-12 col-md-offset-0 text-left">
-					
-
-					<div class="row row-mt-15em">
+				<div class="row row-mt-15em">
+				
 						<div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
 							<h1>Planing Your Trip with Jalan Setapak</h1>	
 						</div>
 						<div class="col-md-4 col-md-push-1 animate-box" data-animate-effect="fadeInRight">
 							<div class="form-wrap">
 								<div class="tab">
+									<div class="tab-content">
+										<div class="tab-content-inner active" data-content="signup">
+											<h3>Book Your Trip</h3>
+											<form action="#">
+												<div class="row form-group">
+													<div class="col-md-12">
+														<label for="fullname">Your Name</label>
+														<input type="text" id="fullname" class="form-control">
+													</div>
+												</div>
+												<div class="row form-group">
+													<div class="col-md-12">
+														<label for="activities">Activities</label>
+														<select name="#" id="activities" class="form-control">
+															<option value="">Activities</option>
+															<option value="">Hiking</option>
+															<option value="">Caving</option>
+															<option value="">Swimming</option>
+														</select>
+													</div>
+												</div>
+												<div class="row form-group">
+													<div class="col-md-12">
+														<label for="destination">Destination</label>
+														<select name="#" id="destination" class="form-control">
+															<option value="">Philippines</option>
+															<option value="">USA</option>
+															<option value="">Australia</option>
+															<option value="">Singapore</option>
+														</select>
+													</div>
+												</div>
+												
+												<div class="row form-group">
+													<div class="col-md-12">
+														<label for="date-start">Date Travel</label>
+														<input type="text" id="date-start" class="form-control">
+													</div>
+												</div>
+
+												<div class="row form-group">
+													<div class="col-md-12">
+														<input type="submit" class="btn btn-primary btn-block" value="Submit">
+													</div>
+												</div>
+											</form>	
+										</div>
+
 										
 									</div>
 								</div>
@@ -120,6 +168,7 @@
 		</div>
 	</header>
 	
+	
 	<div class="gtco-section">
 		<div class="gtco-container">
 			<div class="row">
@@ -130,86 +179,85 @@
 			</div>
 			<div class="row">
 
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="<?= base_url('assets/master/');?>images/img_1.jpg" class="fh5co-card-item image-popup">
+				<div class="col-lg-4 col-md-4 col-sm-6" name="data1">
+					<a href="CUser/tampilpesan">
 						<figure>
-							<div class="overlay"><i class="ti-plus"></i></div>
-							<img src="<?= base_url('assets/master/');?>images/img_1.jpg" alt="Image" class="img-responsive">
+							<div class="overlay"></div>
+							<img src="<?= base_url('assets/img/');?>5.jpg" alt="Image" class="img-responsive">
 						</figure>
 						<div class="fh5co-text">
-							<h2>New York, USA</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-							<p><span class="btn btn-primary">Schedule a Trip</span></p>
+							<h2>Malioboro, Yogyakarta</h2>
+							<p>Kota kebudayaan yang indah dan unik. Disebut juga sebagai pasar malamnya Jogja, karena Malioboro akan ramai ketika malam tiba.</p>
 						</div>
 					</a>
 				</div>
 				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="<?= base_url('assets/master/');?>images/img_2.jpg" class="fh5co-card-item image-popup">
+					<a href="" >
 						<figure>
-							<div class="overlay"><i class="ti-plus"></i></div>
-							<img src="<?= base_url('assets/master/');?>images/img_2.jpg" alt="Image" class="img-responsive">
+							<div class="overlay"></div>
+							<img src="<?= base_url('assets/img/');?>11.jpg" alt="Image" class="img-responsive">
 						</figure>
 						<div class="fh5co-text">
-							<h2>Seoul, South Korea</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-							<p><span class="btn btn-primary">Schedule a Trip</span></p>
+							<h2>Borobudur , Magelang</h2>
+							<p>Candi yang menjadi salah satu keajaiban dunia ini selalu mempesona di mata dunia. Candi yang berdiri gagah dan sangat luas ini menyimpan banyak cerita sejarah.</p>
 						</div>
 					</a>
 				</div>
 				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="<?= base_url('assets/master/');?>images/img_3.jpg" class="fh5co-card-item image-popup">
+					<a href="" >
 						<figure>
-							<div class="overlay"><i class="ti-plus"></i></div>
-							<img src="<?= base_url('assets/master/');?>images/img_3.jpg" alt="Image" class="img-responsive">
+							<div class="overlay"></div>
+							<img src="<?= base_url('assets/img/');?>8.jpg" alt="Image" class="img-responsive">
 						</figure>
 						<div class="fh5co-text">
-							<h2>Paris, France</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-							<p><span class="btn btn-primary">Schedule a Trip</span></p>
+							<h2>Bromo , Jawa Timur</h2>
+							<p>Bromo gunung yang tidak telalu tinggi, sehinga mudah untuk diakses dan dinikmati oleh siapa saja tanpa harus menjadi seorang pendakin handal. Bromo, terkenal dengan keindahan sunrise-nya</p>
+						
 						</div>
 					</a>
 				</div>
 
 
 				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="<?= base_url('assets/master/');?>images/img_4.jpg" class="fh5co-card-item image-popup">
+					<a href="" >
 						<figure>
-							<div class="overlay"><i class="ti-plus"></i></div>
-							<img src="<?= base_url('assets/master/');?>images/img_4.jpg" alt="Image" class="img-responsive">
+							<div class="overlay"></div>
+							<img src="<?= base_url('assets/img/');?>9.jpg" alt="Image" class="img-responsive">
 						</figure>
 						<div class="fh5co-text">
-							<h2>Sydney, Australia</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-							<p><span class="btn btn-primary">Schedule a Trip</span></p>
+							<h2>Merapi</h2>
+							<p>Salah satu gunung berapi yang masih aktif di Indonesia. Merapi, dijadikan sebagai tempat wisata yang menarik dan wajib dikunjungi.</p>
+							
 						</div>
 					</a>
 				</div>
 
 				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="<?= base_url('assets/master/');?>images/img_5.jpg" class="fh5co-card-item image-popup">
+					<a href="">
 						<figure>
-							<div class="overlay"><i class="ti-plus"></i></div>
-							<img src="<?= base_url('assets/master/');?>images/img_5.jpg" alt="Image" class="img-responsive">
+							<div class="overlay"></div>
+							<img src="<?= base_url('assets/img/');?>10.jpg" alt="Image" class="img-responsive">
 						</figure>
 						<div class="fh5co-text">
-							<h2>Greece, Europe</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-							<p><span class="btn btn-primary">Schedule a Trip</span></p>
+							<h2>Raja Ampat , Papua</h2>
+							<p>Raja Ampat, adalah surga dunia. Keindahannya sangat mempesona, batu batu karang yang ada di laut menambah keindahan Raja Ampat.</p>
+							
 						</div>
 					</a>
 				</div>
 
 				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="<?= base_url('assets/master/');?>images/img_6.jpg" class="fh5co-card-item image-popup">
+					<a href="CPariwisata">
 						<figure>
-							<div class="overlay"><i class="ti-plus"></i></div>
-							<img src="<?= base_url('assets/master/');?>images/img_6.jpg" alt="Image" class="img-responsive">
+							<div class="overlay"></div>
+							<img src="<?= base_url('assets/img/');?>12.jpg" alt="Image" class="img-responsive">
 						</figure>
 						<div class="fh5co-text">
-							<h2>Spain, Europe</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-							<p><span class="btn btn-primary">Schedule a Trip</span></p>
+							<h2>Lawang Sewu , Semarang</h2>
+							<p>Salah satu situs peninggalan sejarah yang hingga kini keberadaannya sangat dinikmati masyarakat dan menjadi tempat wisata yang hits.</p>
+							
 						</div>
+						
 					</a>
 				</div>
 

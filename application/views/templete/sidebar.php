@@ -46,13 +46,25 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/forms/general.html" class="nav-link">
+                <a href="<?php base_url();?>index" class="nav-link">
                   <i class="far fa-user nav-icon"></i>
                   <p>List Data</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/forms/advanced.html" class="nav-link">
+                <a href="<?php base_url();?>dataKelas" class="nav-link">
+                  <i class="far fa-user nav-icon"></i>
+                  <p>Data Destinasi Wisata</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php base_url();?>datakkelas" class="nav-link">
+                  <i class="far fa-user nav-icon"></i>
+                  <p>Data Kelas Wisata</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php base_url();?>logout" class="nav-link">
                   <i class="far fa-user nav-icon"></i>
                   <p>Logout</p>
                 </a>

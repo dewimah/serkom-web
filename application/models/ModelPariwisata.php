@@ -9,21 +9,50 @@ class ModelPariwisata extends CI_Model{
     public $fasilitas;
 
     public function tampil_data(){
-        return $this->db->get('paket_wisata');
+       // return $this->db->get('paket');
+       $this->db->select('*');
+       $this->db->from('paket');
+       $this->db->join('destinasi','destinasi.id_wisata=paket.destinasi','right');		
+       $this->db->join('kelas', 'kelas.id_kelas=paket.kelas','right');
+       $query = $this->db->get();
+       return $query;
     }
+    public function tampil_destinasi(){
+        return $this->db->get('destinasi');
+     }
+     public function tampil_kelas(){
+        return $this->db->get('kelas');
+     }
+     public function inputDestinasi($data){
+        $this->db->insert('destinasi', $data);
+     }
+     public function inputKelas($data){
+        $this->db->insert('kelas', $data);
+     }
     public function get_all2()
     {
         $this->db->select('*');
-        $this->db->from('paket_wisata');
-        $this->db->join('jenis_wisata','paket_wisata.jenis_paket = jenis_wisata.kode');
-        $this->db->order_by('nama_paket ASC');
+        $this->db->from('paket');
+        $this->db->join('destinasi','destinasi.id_wisata=paket.destinasi');
+        $this->db->join('kelas', 'kelas.id_kelas=paket.kelas');
+        $this->db->order_by('destinasi ASC');
         $query = $this->db->get();
         return $query;
           
     }
+   /*public function get_all3(){
+        $this->db->table('paket')
+        ->join('destinasi','destinasi.id_wisata=paket.destinasi')
+        ->join('kelas', 'kelas.id_kelas=paket.kelas')
+    }*/
     public function inputData($data)
     {      
-            $this->db->insert('paket_wisata', $data);
+            $this->db->insert('paket', $data);
+            //koma pertama nama table database
+    }
+    public function inputpesan($data)
+    {      
+            $this->db->insert('pesan', $data);
             //koma pertama nama table database
     }
     public function hapus_data($where, $table){
@@ -33,12 +62,26 @@ class ModelPariwisata extends CI_Model{
     public function editdata($where, $table){
        return $this->db->get_where($table,$where);
     }
+    public function editDestinasi($where, $table){
+        return $this->db->get_where($table,$where);
+     }
+     public function editKelas($where, $table){
+        return $this->db->get_where($table,$where);
+     }
+     public function updateDestinasi($where,$data,$table){
+        $this->db->where($where);
+        $this->db->update($table,$data);
+    }
+    public function updateKelas($where,$data,$table){
+        $this->db->where($where);
+        $this->db->update($table,$data);
+    }
     public function updateData($where,$data,$table){
         $this->db->where($where);
         $this->db->update($table,$data);
     }
     public function detailData($id_paket=null){
-        $query = $this->db->get_where('paket_wisata',array('id_paket'=>$id_paket))->row();
+        $query = $this->db->get_where('paket',array('id_paket'=>$id_paket))->row();
         return $query;
     }
     public function image(){
