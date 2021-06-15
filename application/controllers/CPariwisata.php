@@ -37,6 +37,24 @@ class CPariwisata extends CI_Controller {
          $this->load->view('admin/datakkelas', $data);
          $this->load->view('templete/footer');
     }
+    public function datapelanggan(){
+        $data['pelanggan']=$this->ModelPariwisata->tampil_pelanggan()->result();
+        //$this->load->view('admin/v_paket', $data); 
+  
+         $this->load->view('templete/header');
+         $this->load->view('templete/sidebar');
+         $this->load->view('user/pelanggan', $data);
+         $this->load->view('templete/footer');
+    }
+    public function datapesanan(){
+        $data['pesan']=$this->ModelPariwisata->tampil_pesan()->result();
+        //$this->load->view('admin/v_paket', $data); 
+  
+         $this->load->view('templete/header');
+         $this->load->view('templete/sidebar');
+         $this->load->view('admin/pesanan', $data);
+         $this->load->view('templete/footer');
+    }
     public function tambah_aksi(){
                 $this->load->library('form_validation');
                 $product=$this->ModelPariwisata;
@@ -49,15 +67,6 @@ class CPariwisata extends CI_Controller {
 			);
 			$this->form_validation->set_rules('harga', 'harga', 'required');
 			$this->form_validation->set_rules('fasilitas', 'fasilitas', 'required');
-            //$validation = $this->form_validation;
-            //$validation->set_rules($product->rule());
-               // if ($validation->run())
-                {
-                   // $this->tambah_aksi();
-                       // $this->session->set_flashdata('success','berhasil disimpan');
-                }
-               // $this->load->view->v_paket;
-            
                 
         $id_paket = $this->input->post('id');
         $destinasi = $this->input->post('destinasi');
@@ -101,37 +110,21 @@ class CPariwisata extends CI_Controller {
         $this->ModelPariwisata->inputKelas($data);
         $this->load->view('admin/formsuccess', $data);
     }
-    /*public function image(){
-        if($this->input->post('upload') != NULL ){ 
-            $data = array(); 
-            if(!empty($_FILES['file']['name'])){ 
-               // Set preference 
-                $config['upload_path']          = '/assets/img/';
-                $config['allowed_types']        = 'gif|jpg|png|jpeg';
-                //$config['max_size']             = 100;
-                //$config['max_width']            = 1024;
-                //$config['max_height']           = 768;
-                $config['file_name']            = $_FILES['file']['name'];
+    public function tambahPelanggan(){
+        $id = $this->input->post('id');
+        $email = $this->input->post('email');
+        $nama = $this->input->post('nama');
+        $no = $this->input->post('no');
 
-                $this->load->library('upload', $config);
-
-                if ($this->upload->do_upload('file'))
-                {
-                    //$uploaddata = array('upload_data' => $this->upload->data());
-                    $uploaddata = $this->upload->data();
-                    $filename = $uploaddata['file_name'];
-                    $this->load->view('admin/formsucces', $data);   
-                    // $error = array('error' => $this->upload->display_errors());
-
-                      //echo "Gambar gagal di upload";
-                }
-                else
-                {
-                       
-                }
-        }
+        $data = array (
+            'id'=>$id,
+            'email'=>$email,
+            'nama'=>$nama,
+            'no'=>$no,
+        );
+        $this->ModelPariwisata->inputPelanggan($data);
+        $this->load->view('admin/formsuccess', $data);
     }
-}*/
     public function hapus($id_paket){
         $where = array ('id_paket'=> $id_paket);
         $this->ModelPariwisata->hapus_data($where, 'paket');
@@ -144,8 +137,13 @@ class CPariwisata extends CI_Controller {
     }
     public function hapuskelas($id_kelas){
         $where = array ('id_kelas'=> $id_kelas);
-        $this->ModelPariwisata->hapus_data($where, 'destinasi');
+        $this->ModelPariwisata->hapus_data($where, 'kelas');
         redirect('CPariwisata/datakkelas');
+    }
+    public function hapuspelanggan($id){
+        $where = array ('id'=> $id);
+        $this->ModelPariwisata->hapus_data($where, 'user');
+        redirect('CPariwisata/datapelanggan');
     }
     public function edit($id_paket){
         $where = array ('id_paket' => $id_paket);
@@ -170,6 +168,38 @@ class CPariwisata extends CI_Controller {
         $this->load->view('templete/sidebar');
 		$this->load->view('edit_kelas', $data);
         $this->load->view('templete/footer');
+    }
+    public function editpelanggan($id){
+        $where = array ('id' => $id);
+        $data['pelanggan']=$this->ModelPariwisata->editpelanggan($where,'user')->result();
+        $this->load->view('templete/header');
+        $this->load->view('templete/sidebar');
+		$this->load->view('edit_pelanggan', $data);
+        $this->load->view('templete/footer');
+    }
+    public function update(){
+        $id_paket=$this->input->post('id');
+        $jenis_paket=$this->input->post('jenis_wisata');
+        $nama_paket = $this->input->post('nama');
+        $harga_paket = $this->input->post('harga');
+        $foto_paket = $this->input->post('foto');
+        $fasilitas_paket = $this->input->post('fasilitas');
+        $status_paket = $this->input->post('status');
+
+        $data = array(
+            'id_paket'=>$id_paket,
+            'jenis_paket'=>$jenis_paket,
+            'nama_paket'=>$nama_paket,
+            'harga_paket'=>$harga_paket,
+            'foto_paket'=>$foto_paket,
+            'fasilitas_paket'=>$fasilitas_paket,
+            'status_paket'=>$status_paket,
+        );
+        $where = array(
+            'id_paket' => $id_paket
+        );
+        $this->ModelPariwisata->updateData($where, $data, 'paket_wisata');
+        redirect('CPariwisata/index');
     }
     public function updateDestinasi(){
         $id_wisata=$this->input->post('id');
@@ -205,29 +235,23 @@ class CPariwisata extends CI_Controller {
         $this->ModelPariwisata->updateKelas($where, $data, 'kelas');
         redirect('CPariwisata/datakkelas');
     }
-    public function update(){
-        $id_paket=$this->input->post('id');
-        $jenis_paket=$this->input->post('jenis_wisata');
-        $nama_paket = $this->input->post('nama');
-        $harga_paket = $this->input->post('harga');
-        $foto_paket = $this->input->post('foto');
-        $fasilitas_paket = $this->input->post('fasilitas');
-        $status_paket = $this->input->post('status');
+    public function updatePelanggan(){
+        $id=$this->input->post('id');
+        $email=$this->input->post('email');
+        $nama= $this->input->post('nama');
+        $no= $this->input->post('no');
 
         $data = array(
-            'id_paket'=>$id_paket,
-            'jenis_paket'=>$jenis_paket,
-            'nama_paket'=>$nama_paket,
-            'harga_paket'=>$harga_paket,
-            'foto_paket'=>$foto_paket,
-            'fasilitas_paket'=>$fasilitas_paket,
-            'status_paket'=>$status_paket,
+            'id'=>$id,
+            'email'=>$email,
+            'nama'=>$nama,
+            'no_telp'=>$no,
         );
         $where = array(
-            'id_paket' => $id_paket
+            'id' => $id
         );
-        $this->ModelPariwisata->updateData($where, $data, 'paket_wisata');
-        redirect('CPariwisata/index');
+        $this->ModelPariwisata->updatePelanggan($where, $data, 'user');
+        redirect('CPariwisata/datapelanggan');
     }
     public function detail($id_paket){
         $this->load->model('ModelPariwisata');

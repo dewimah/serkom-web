@@ -23,11 +23,20 @@ class ModelPariwisata extends CI_Model{
      public function tampil_kelas(){
         return $this->db->get('kelas');
      }
+     public function tampil_pelanggan(){
+        return $this->db->get('user');
+     }
+     public function tampil_pesan(){
+        return $this->db->get('pemesanan');
+     }
      public function inputDestinasi($data){
         $this->db->insert('destinasi', $data);
      }
      public function inputKelas($data){
         $this->db->insert('kelas', $data);
+     }
+     public function inputPelanggan($data){
+        $this->db->insert('user', $data);
      }
     public function get_all2()
     {
@@ -68,6 +77,9 @@ class ModelPariwisata extends CI_Model{
      public function editKelas($where, $table){
         return $this->db->get_where($table,$where);
      }
+     public function editPelanggan($where, $table){
+        return $this->db->get_where($table,$where);
+     }
      public function updateDestinasi($where,$data,$table){
         $this->db->where($where);
         $this->db->update($table,$data);
@@ -77,6 +89,10 @@ class ModelPariwisata extends CI_Model{
         $this->db->update($table,$data);
     }
     public function updateData($where,$data,$table){
+        $this->db->where($where);
+        $this->db->update($table,$data);
+    }
+    public function updatePelanggan($where,$data,$table){
         $this->db->where($where);
         $this->db->update($table,$data);
     }
