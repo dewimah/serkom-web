@@ -42,7 +42,6 @@ public function login(){
     $row = $query->row();
     $params = array(
       'id' => $row->id,
-      'level' => $row->level
     );
     $this->session->set_userdata($params);
     echo"<script>

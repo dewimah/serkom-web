@@ -17,6 +17,22 @@ class CUser extends CI_Controller {
         $data['datapaket']=$this->ModelPariwisata->tampil_data()->result();
         $this->load->view('user/v_pesan', $data);
     }
+    public function tambahpesanan(){
+        $pesan=$this->ModelPariwisata;
+        $tgl_pesan = $this->input->post('pesen');
+        $jml_penumpang = $this->input->post('orang');
+        $tgl_berangkat = $this->input->post('mangkat');
+        $tgl_kembali = $this->input->post('bali');
+    
+        $data = array (
+            'tanggal_pemesanan'=>$tgl_pesan,
+            'jml_penumpang'=>$jml_penumpang,
+            'tgl_berangkat'=>$tgl_berangkat,
+            'tgl_kembali'=>$tgl_kembali
+        );
+        $this->ModelPariwisata->inputpesan($data);
+        $this->load->view('admin/formsuccess', $data);
+    }
     public function struk($id_paket){
         $where = array ('id_paket' => $id_paket);
         $data['datapaket']=$this->ModelPariwisata->editData($where,'paket_wisata')->result();

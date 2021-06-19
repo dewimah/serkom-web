@@ -14,9 +14,9 @@ class Cart extends CI_Controller{
  
     function add_to_cart(){ //fungsi Add To Cart
         $data = array(
-            'id' => $this->input->post('produk_id'), 
-            'name' => $this->input->post('produk_nama'), 
-            'price' => $this->input->post('produk_harga'), 
+            'id' => $this->input->post('id'), 
+            'name' => $this->input->post('nama_wisata'), 
+            'price' => $this->input->post('harga_kelas'), 
             'qty' => $this->input->post('quantity'), 
         );
         $this->cart->insert($data);
@@ -62,7 +62,7 @@ class Cart extends CI_Controller{
     function submit(){
         //input tabel pembelian
 	    $data1['idpembelian']=time();
-		$data1['pembeli']="bejo"; // ambil dari sesion pembeli
+		$data1['nama']="kanti"; // ambil dari sesion pembeli
 		$this->cart_model->submitpembelian($data1); 
  		//input tabel detail pembelian
         foreach ($this->cart->contents() as $items) {

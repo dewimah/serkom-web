@@ -61,7 +61,7 @@ class ModelPariwisata extends CI_Model{
     }
     public function inputpesan($data)
     {      
-            $this->db->insert('pesan', $data);
+            $this->db->insert('pemesanan', $data);
             //koma pertama nama table database
     }
     public function hapus_data($where, $table){
@@ -96,34 +96,18 @@ class ModelPariwisata extends CI_Model{
         $this->db->where($where);
         $this->db->update($table,$data);
     }
-    public function detailData($id_paket=null){
-        $query = $this->db->get_where('paket',array('id_paket'=>$id_paket))->row();
-        return $query;
+    public function submitpembelian($data){
+        $this->db->insert('pembelian', $data);
     }
-    public function image(){
-            
-        $config['upload_path'] = './assets/foto';
-        $config['file_name'] = $this->id_paket;
-        $config['overwrite'] = true;
-        $this->load->library('upload',$config);
-      
-       //$this->load->library('upload', $config);
-        if($this->upload->do_upload('foto_paket')){
-            //$return=array('result'=>'succes','file'=>$this->upload->data(),'error'=>'');
-            return $this->upload->data("file_name");
-            //echo "Foto Gagal Di Upload"; die();
-            //$foto_paket="";
-        }
-           // $return = array('result'=>'failed','file'=>'','error'=>$this->upload->display_errors());
-           return "default.jpg";
-           //$foto_paket=$this->upload->file_name;
-        }
-    public function rule(){
-        return[
-            ['field'=>'nama',
-            'label'=>'Nama',
-            'rules'=>'required']
-        ];
+    public function find($id){
+        $result = $this->db->where('id',$id)
+                            ->limit(1)
+                            ->get('nama_wisata');
+                if($result->num_rows() > 0){
+                    return $result->row();
+                }else{
+                    return array();
+                }
     }
 }
 ?>

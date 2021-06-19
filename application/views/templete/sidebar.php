@@ -46,31 +46,31 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="index" class="nav-link">
+                <a href="<?php echo base_url('CPariwisata/index')?>" class="nav-link">
                   <i class="far fa-user nav-icon"></i>
                   <p>List Data</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="dataKelas" class="nav-link">
+                <a href="<?php echo base_url('CPariwisata/dataKelas')?>" class="nav-link">
                   <i class="far fa-user nav-icon"></i>
                   <p>Data Destinasi Wisata</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="datakkelas" class="nav-link">
+                <a href="<?php echo base_url('CPariwisata/datakkelas')?>" class="nav-link">
                   <i class="far fa-user nav-icon"></i>
                   <p>Data Kelas Wisata</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="datapelanggan" class="nav-link">
+                <a href="<?php echo base_url('CPariwisata/datapelanggan')?>" class="nav-link">
                   <i class="far fa-user nav-icon"></i>
                   <p>Data Palanggan</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="datapesanan" class="nav-link">
+                <a href="<?php echo base_url('CPariwisata/datapesanan')?>" class="nav-link">
                   <i class="far fa-user nav-icon"></i>
                   <p>Data Pemesanan</p>
                 </a>

@@ -178,27 +178,19 @@ class CPariwisata extends CI_Controller {
         $this->load->view('templete/footer');
     }
     public function update(){
-        $id_paket=$this->input->post('id');
-        $jenis_paket=$this->input->post('jenis_wisata');
-        $nama_paket = $this->input->post('nama');
-        $harga_paket = $this->input->post('harga');
-        $foto_paket = $this->input->post('foto');
-        $fasilitas_paket = $this->input->post('fasilitas');
-        $status_paket = $this->input->post('status');
-
-        $data = array(
+        $id_paket = $this->input->post('id');
+        $destinasi = $this->input->post('destinasi');
+        $kelas = $this->input->post('kelas');
+    
+        $data = array (
             'id_paket'=>$id_paket,
-            'jenis_paket'=>$jenis_paket,
-            'nama_paket'=>$nama_paket,
-            'harga_paket'=>$harga_paket,
-            'foto_paket'=>$foto_paket,
-            'fasilitas_paket'=>$fasilitas_paket,
-            'status_paket'=>$status_paket,
+            'destinasi'=>$destinasi,
+            'kelas'=>$kelas,
         );
         $where = array(
             'id_paket' => $id_paket
         );
-        $this->ModelPariwisata->updateData($where, $data, 'paket_wisata');
+        $this->ModelPariwisata->updateData($where, $data, 'paket');
         redirect('CPariwisata/index');
     }
     public function updateDestinasi(){

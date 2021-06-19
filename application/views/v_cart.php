@@ -20,6 +20,7 @@
   </body>
 </html>
 <section class="content" href="CUser/struk">
+<h3><center>Paket Wisata Jalan Setapak</center></h3><br>
   <table class="table">
     <tr>
     <th>ID Paket </th>
