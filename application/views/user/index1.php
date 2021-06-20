@@ -84,8 +84,8 @@
 								<li><a href="#">Canada</a></li>
 							</ul>
 						</li>
-						<li><a href="<?= base_url('assets/master/');?>pricing.html">Contact</a></li>
-						<li><a href="<?= base_url('assets/master/');?>contact.html">Logout</a></li>
+						<li><a href="<?php echo base_url('CUser/tampildatapaket')?>">Pesan</a></li>
+						<li><a href="<?php echo base_url('CUser/logout')?>">Logout</a></li>
 					</ul>	
 				</div>
 			</div>

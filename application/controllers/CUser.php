@@ -13,12 +13,18 @@ class CUser extends CI_Controller {
     public function index(){
         $this->load->view('user/index1');
     }
+    public function tampildatapaket(){
+        $data['datapaket']=$this->ModelPariwisata->tampil_data()->result();
+        $this->load->view('user/paketdata', $data);
+    }
+    public function formpemesanan(){
+        $this->load->view('user/v_formpesan');
+    }
     public function tampilpesan(){
         $data['datapaket']=$this->ModelPariwisata->tampil_data()->result();
         $this->load->view('user/v_pesan', $data);
     }
     public function tambahpesanan(){
-        $pesan=$this->ModelPariwisata;
         $tgl_pesan = $this->input->post('pesen');
         $jml_penumpang = $this->input->post('orang');
         $tgl_berangkat = $this->input->post('mangkat');
@@ -64,5 +70,9 @@ class CUser extends CI_Controller {
     }
     public function finish(){
         $this->load->view('user/finish');
+    }
+    public function logout(){
+        $this->session->sess_destroy();
+        redirect('beranda');
     }
 }

@@ -82,7 +82,6 @@ class CPariwisata extends CI_Controller {
     }
 
     public function tambahDestinasi(){
-        $product=$this->ModelPariwisata;
         $id = $this->input->post('id');
         $nama = $this->input->post('nama');
         $alamat = $this->input->post('alamat');

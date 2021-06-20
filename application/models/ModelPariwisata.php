@@ -12,8 +12,8 @@ class ModelPariwisata extends CI_Model{
        // return $this->db->get('paket');
        $this->db->select('*');
        $this->db->from('paket');
-       $this->db->join('destinasi','destinasi.id_wisata=paket.destinasi','right');		
-       $this->db->join('kelas', 'kelas.id_kelas=paket.kelas','right');
+       $this->db->join('destinasi','destinasi.id_wisata=paket.destinasi');		
+       $this->db->join('kelas', 'kelas.id_kelas=paket.kelas');
        $query = $this->db->get();
        return $query;
     }

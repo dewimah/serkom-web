@@ -35,7 +35,7 @@
        {
                $options[$row['id_paket']]=$row['kelas'];
        }
-       $km=set_value('kelas');
+       $km=set_value($paket->kelas);
        echo form_dropdown('kelas',$options,$km);
        ?>
       </div></br>

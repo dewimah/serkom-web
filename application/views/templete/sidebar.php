@@ -76,7 +76,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php base_url();?>logout" class="nav-link">
+                <a href="<?php echo base_url('CPariwisata/logout')?>" class="nav-link">
                   <i class="far fa-user nav-icon"></i>
                   <p>Logout</p>
                 </a>
