@@ -37,7 +37,7 @@ class CUser extends CI_Controller {
             'tgl_kembali'=>$tgl_kembali
         );
         $this->ModelPariwisata->inputpesan($data);
-        $this->load->view('admin/formsuccess', $data);
+        $this->load->view('user/formsuccess', $data);
     }
     public function struk($id_paket){
         $where = array ('id_paket' => $id_paket);

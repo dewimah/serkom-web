@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 19, 2021 at 03:27 PM
+-- Generation Time: Jun 21, 2021 at 08:20 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -61,12 +61,13 @@ CREATE TABLE `destinasi` (
 
 INSERT INTO `destinasi` (`id_wisata`, `nama_wisata`, `alamat_wisata`) VALUES
 (1, 'Raja Ampat', 'Papua Barat'),
-(2, 'Selo', 'Nusa Tenggara'),
+(2, 'Selo', 'Boyolali'),
 (3, 'Komodo', 'Lombok'),
 (4, 'Borobudur', 'Magelang'),
 (5, 'Malioboro', 'Yogyakarta'),
 (6, 'Tawangmangu', 'Karanganyar'),
-(7, 'Sepikul', 'Bulu');
+(7, 'Sepikul', 'Bulu, Jawa Tengah'),
+(8, 'Makkah', 'Arab Saudi');
 
 -- --------------------------------------------------------
 
@@ -88,7 +89,7 @@ CREATE TABLE `kelas` (
 INSERT INTO `kelas` (`id_kelas`, `nama_kelas`, `harga_kelas`, `fasilitas`) VALUES
 (1, 'Bisnis', 'Rp10000000', 'kolam renang, mobil, tiket'),
 (2, 'Ekonomi', 'Rp500000', 'Tiket, Mobil'),
-(3, 'Sultan', 'Rp1000000000', 'yatch mewah, hunian 1 minggu, guide, makan');
+(3, 'Sultan', 'Rp1000000000', 'Yatch Mewah, Hunian 1 Minggu, Guide');
 
 -- --------------------------------------------------------
 
@@ -107,12 +108,14 @@ CREATE TABLE `paket` (
 --
 
 INSERT INTO `paket` (`id_paket`, `destinasi`, `kelas`) VALUES
-(1, 2, 1),
+(1, 3, 1),
+(2, 2, 1),
 (3, 4, 1),
-(4, 6, 3),
+(4, 5, 1),
 (5, 3, 1),
 (6, 7, 2),
-(7, 4, 3);
+(7, 6, 1),
+(8, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -123,12 +126,21 @@ INSERT INTO `paket` (`id_paket`, `destinasi`, `kelas`) VALUES
 CREATE TABLE `pemesanan` (
   `id_pemesanan` int(5) NOT NULL,
   `id_transportasi` int(5) NOT NULL,
-  `tanggal_pemesanan` date NOT NULL,
-  `jml_penumpang` int(16) NOT NULL,
-  `tgl_berangkat` date NOT NULL,
-  `tgl_kembali` date NOT NULL,
-  `total_biaya` int(50) NOT NULL
+  `tanggal_pemesanan` varchar(10) NOT NULL,
+  `jml_penumpang` varchar(16) NOT NULL,
+  `tgl_berangkat` varchar(10) NOT NULL,
+  `tgl_kembali` varchar(10) DEFAULT NULL,
+  `total_biaya` int(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pemesanan`
+--
+
+INSERT INTO `pemesanan` (`id_pemesanan`, `id_transportasi`, `tanggal_pemesanan`, `jml_penumpang`, `tgl_berangkat`, `tgl_kembali`, `total_biaya`) VALUES
+(1, 0, '07/01/2021', '10', '13/08/01', '17/08/01', NULL),
+(2, 0, '07/05/2021', '10', '13/08/01', '17/08/01', NULL),
+(3, 0, '09/08/01', '3', '13/08/01', '17/08/01', NULL);
 
 -- --------------------------------------------------------
 
@@ -149,6 +161,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `email`, `nama`, `password`, `no_telp`) VALUES
+(0, 'dewi@gmail.com', 'Dewi Maharani S', '$2y$1', '087764062978'),
 (2, 'gondo@gmail.com', 'Gondosuli', '$2y$1', '0987764062978'),
 (3, 'sultan@gmail.com', 'Sultan Saya', '$2y$1', '08977665678'),
 (4, 'kanti@gmail.com', 'kinanthi', '$2y$1', '087456765345');
@@ -211,7 +224,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `destinasi`
 --
 ALTER TABLE `destinasi`
-  MODIFY `id_wisata` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_wisata` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `pemesanan`
+--
+ALTER TABLE `pemesanan`
+  MODIFY `id_pemesanan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
