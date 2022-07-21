@@ -46,7 +46,7 @@ public function login(){
     $this->session->set_userdata($params);
     echo"<script>
     alert('Login sukses');
-    window.location='".site_url('CPariwisata')."';
+    window.location='".site_url('CSiswa')."';
     </script>";
   }else{
     echo"<script>
@@ -66,17 +66,16 @@ if($query->num_rows()> 0){
   $row = $query->row();
   $params = array(
     'id' => $row->id,
-    'nama' => $row->nama
   );
   $this->session->set_userdata($params);
   echo"<script>
   alert('Login sukses');
-  window.location='".site_url('CUser')."';
+  window.location='".site_url('CAdmin')."';
   </script>";
 }else{
   echo"<script>
   alert('Login Gagal , Username / Password Salah');
-  window.location='".site_url('beranda.php')."';
+  window.location='".site_url('auth')."';
   </script>";
 }
 } 

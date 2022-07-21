@@ -70,13 +70,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <h3>Your form was successfully submitted!</h3>
 
 <?php
-echo "id: $id_paket </br>";
-echo "nama : $nama_paket </br>";
-echo "jenis : $jenis_paket </br>";
-echo "harga : $harga_paket </br>";
-echo "foto : $foto_paket </br>";
-echo "fasilitas : $fasilitas_paket </br>";
-redirect('/CPariwisata');
+echo "id: $id_siswa </br>";
+echo "nomor induk : $nomorinduk </br>";
+echo "nama : $nama </br>";
+echo "tempat tanggal lahir : $ttl </br>";
+echo "alamat : $alamat </br>";
+echo "nilaiakhir : $nilaiakhir </br>";
+echo "nilaimtk : $nilaimtk </br>";
+echo "nilai indo : $nilaiindo </br>";
+echo "nilai ingggris: $nilaiing </br>";
+echo "nama wali : $namawali </br>";
+echo "foto : $foto </br>";
+redirect('/CAdmin');
 
 ?>
 </body>

@@ -1,44 +1,64 @@
 <div class="content-wrapper">
     <section class="content">
-        <?php foreach($datapaket as $paket) { ?>
+        <?php foreach($datasiswa as $siswa) { ?>
 
-        <form action="<?php echo base_url().'CPariwisata/update'; ?>"
+        <form action="<?php echo base_url().'CSiswa/update'; ?>"
         method="post">
 
-         
-       <div class="form-grup">
-       <label>ID Paket</label>
-       <input type="text" name="id" class="form-control" value="<?php echo $paket->id_paket ?>">
+		<div class="form-grup">
+        <label>id Siswa</label>
+       <input type="text" name="id" class="form-control" value="<?php echo $siswa->id_siswa ?>">
        </div>
 
-       <div class="form-grup">
-       <label>Destinasi</label></br>
-       <?php 
-       $datapaket = $this->db->get('paket');
+        <div class="form-grup">
+        <label>Nomor induk</label>
+       <input type="text" name="noin" class="form-control" value="<?php echo $siswa->nomorinduk ?>">
+       </div>
 
-       foreach ($datapaket->result_array() as $row)
-       {
-               $options[$row['id_paket']]=$row['destinasi'];
-       }
-       $jenis=set_value($paket->destinasi);
-       echo form_dropdown('destinasi',$options,$jenis);
-       ?>
-      </div> 
+        <div class="form-grup">
+        <label>Nama</label>
+       <input type="text" name="nama" class="form-control" value="<?php echo $siswa->nama?>">
+        </div>
+        
+        <div class="form-grup">
+        <label>Tempat Tanggal Lahir</label>
+       <input type="text" name="ttl" class="form-control" value="<?php echo $siswa->ttl ?>">
+        </div>
 
-       
-      <div class="form-grup">
-       <label>Kelas</label></br>
-       <?php 
-       $data = $this->db->get('paket');
+        <div class="form-grup">
+        <label>Alamat</label>
+       <input type="text" name="alamat" class="form-control" value="<?php echo $siswa->alamat ?>">
+        </div>
 
-       foreach ($data->result_array() as $row)
-       {
-               $options[$row['id_paket']]=$row['kelas'];
-       }
-       $km=set_value($paket->kelas);
-       echo form_dropdown('kelas',$options,$km);
-       ?>
-      </div></br>
+		<div class="form-grup">
+        <label>nilai MTK</label>
+       <input type="text" name="mtk" class="form-control" value="<?php echo $siswa->nilaimtk ?>">
+        </div>
+
+		<div class="form-grup">
+        <label>nilai Indo</label>
+       <input type="text" name="indo" class="form-control" value="<?php echo $siswa->nilaiindo ?>">
+        </div>
+
+		<div class="form-grup">
+        <label>nilai inggris</label>
+       <input type="text" name="ing" class="form-control" value="<?php echo $siswa->nilaiing ?>">
+        </div>
+
+		<div class="form-grup">
+        <label>nama Wali</label>
+       <input type="text" name="wali" class="form-control" value="<?php echo $siswa->namawali ?>">
+        </div>
+
+		<div class="form-grup">
+       <label>Foto</label></br>
+       <input type="file" name="foto" class="form-control" value="<?php echo $siswa->foto ?>">
+       </div>
+
+		<div class="form-grup">
+        <label>Status</label>
+       <input type="text" name="status" class="form-control" value="<?php echo $siswa->status ?>">
+        </div>
         
             </br>
         <button type="submit" class="btn btn-primary">Simpan</button>
